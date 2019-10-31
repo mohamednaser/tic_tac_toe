@@ -19,7 +19,7 @@ For a throughout description of the game you can read [this article from wikiped
 
 ## Authors
 
-This project was executed by the duo of :
+This project was executed by the duo of:
 
 - [Mohamed Naser](https://www.linkedin.com/in/mohamednaseramein/)
 - [Santiago Rodríguez](https://www.linkedin.com/in/santiago-andrés-308a5b190)
