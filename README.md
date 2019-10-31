@@ -1,10 +1,10 @@
-# Tic Tac Toe Game
+# Tic Tac Toe game
 
 For a throughout description of the game you can read [this article from wikipedia](https://en.wikipedia.org/wiki/Tic-tac-toe). Altough you don't have to, **we cover the basic instructions here**. Welcome!
 
 ![Game Cover ](img/cover.jpeg)
 
-## Game Instructions
+## Game instructions
 
 1. The first player chooses a symbol, X or O. The other player has assigned the remaining option.
 2. The board is built as a sucession of ascending numbers that start from 1 through 9, the following image represents the board positions.
@@ -23,7 +23,7 @@ This project was executed by the duo of:
 - [Mohamed Naser](https://www.linkedin.com/in/mohamednaseramein/)
 - [Santiago Rodríguez](https://www.linkedin.com/in/santiago-andrés-308a5b190)
 
-## Used Tools
+## Used tools
 
 - Ruby
 
