@@ -8,7 +8,7 @@ For a throughout description of the game you can read [this article from wikiped
 ## Game Instructios
 
 1. The first player chooses a symbol, X or O. The other player has assigned the remaining option.
-2. The board is built as a sucession of ascending numbers that start from 1 thorugh 9, the following image represents the board positions.
+2. The board is built as a sucession of ascending numbers that start from 1 through 9, the following image represents the board positions.
 
 ![Board](img/board.png)
 
@@ -42,7 +42,8 @@ $ cd tic_tac_toe
 $ ./bin/main.rb
 ```
 
-Note : The `main.rb` file should be executable, if not, type this in your terminal. Note that the `#` means the command __should be executed as root__. 
+If the last command fails then the `main.rb` file is not executable (though it should). Type this in your terminal (note that the `#` means the command __should be executed as root__).
+
 ```console
 # chmod a+x  main.rb
 ```
