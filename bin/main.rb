@@ -21,8 +21,12 @@ board = <<STRING
  * | * | *
  * | * | *
 STRING
-print "There are two possible scenarios: draw or winner, pick one: "
-scenario = gets.chomp.downcase
+scenario = nil
+loop do
+  print "There are two possible scenarios: draw or winner, pick one: "
+  scenario = gets.chomp.downcase
+  break if scenario == 'winner' || scenario == 'draw'
+end
 case scenario
 when 'winner'
   6.times do |i|
