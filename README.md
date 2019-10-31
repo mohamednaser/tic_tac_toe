@@ -9,10 +9,13 @@ For a throughout description of the game you can read [this article from wikiped
 
 1. The first player chooses a symbol, X or O. The other player has assigned the remaining option.
 2. The board is built as a sucession of ascending numbers that start from 1 thorugh 9, the following image represents the board positions.
-	![Board](img/board.png)
+
+![Board](img/board.png)
+
 3. By turns, pick a position at the board.
 4. The player who succeeds in placing three of their symbols in either a horizontal, vertical, or diagonal row wins the game. The following image shows a win scenario for the O player.
-	![Winner](./img/success.png)
+
+![Winner](./img/success.png)
 
 ## Authors
 
