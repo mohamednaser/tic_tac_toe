@@ -30,24 +30,27 @@ board = <<STRING
  * | * | *
 STRING
 
-i = 0
+# This has no logic! Read the milestone 2! This is just a mockup...
 # This loop is just an example, we don't want an infinite loop
-while i < 3
-  if i % 2 == 0 
-    puts "#{first_player_name} : Choose your number! 1-9"
-  else
-    puts "#{second_player_name} : Choose your number! 1-9"
+6.times do |i|
+  loop do
+    if i % 2 != 0 
+      puts "#{first_player_name} : Choose your number! 1-9"
+    else
+      puts "#{second_player_name} : Choose your number! 1-9"
+    end
+    choice = gets.strip.to_i
+    break if (1..9).include? choice
   end
-  choice = gets.strip.downcase.to_i
   puts 'Your choice is valid! printing current state of board...'
   puts "The board looks like:"
   puts board
   # check if the game is over
-
-  i += 1
+  # check if it is a draw
+  # if it is not a draw then it is a win scenario for the current player
+  # change the symbols
+  # increment turns
 end
 
-puts "Great Done #{second_player_name} you are the winner "
-
+puts "Well done #{second_player_name} you are the winner "
 puts 'Game over!'
-# puts player-x is the winner
