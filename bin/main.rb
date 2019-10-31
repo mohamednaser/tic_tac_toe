@@ -1,38 +1,28 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-
 puts 'Welcome to Tic Tac Toe game!'
 puts 'Developed by @mohamed_naser and @santiago-rodrig'
 puts
 print 'First player, please enter your name: '
 first_player_name = gets.strip
-
 print 'Choose your symbol! X or O: '
 first_player_symbol = gets.strip.downcase
-
 while first_player_symbol != 'x' && first_player_symbol != 'o'
   puts "Wrong input!\nYou should choose X or O!"
   first_player_symbol = gets.strip.downcase
 end
-
-puts 'Second Player : Enter Your Name '
+print 'Second player, please enter your name: '
 second_player_name = gets.strip
-
-
 second_player_symbol = first_player_symbol == 'x' ? 'o' : 'x'
-
 puts "Welcome #{first_player_name}, your symbol is: #{first_player_symbol}"
 puts "Welcome #{second_player_name}, your symbol is: #{second_player_symbol}"
-
 board = <<STRING
  * | * | *
  * | * | *
  * | * | *
 STRING
-
 print "There are two possible scenarios: draw or winner, pick one: "
 scenario = gets.chomp.downcase
-
 case scenario
 when 'winner'
   6.times do |i|
