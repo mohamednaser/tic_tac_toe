@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 puts 'Welcome to Tic Tac Toe game!'
 puts 'Developed by @mohamed_naser and @santiago-rodrig'
 puts
@@ -23,7 +24,7 @@ board = <<STRING
 STRING
 scenario = nil
 loop do
-  print "There are two possible scenarios: draw or winner, pick one: "
+  print 'There are two possible scenarios: draw or winner, pick one: '
   scenario = gets.chomp.downcase
   break if scenario == 'winner' || scenario == 'draw'
 end
@@ -31,7 +32,7 @@ case scenario
 when 'winner'
   6.times do |i|
     loop do
-      if i % 2 != 0 
+      if i.odd?
         puts "#{first_player_name} : Choose your number! 1-9"
       else
         puts "#{second_player_name} : Choose your number! 1-9"
@@ -40,7 +41,7 @@ when 'winner'
       break if (1..9).include? choice
     end
     puts 'Your choice is valid! printing current state of board...'
-    puts "The board looks like:"
+    puts 'The board looks like:'
     puts board
     # check if the game is over
     # check if it is a draw
@@ -52,7 +53,7 @@ when 'winner'
 when 'draw'
   8.times do |i|
     loop do
-      if i % 2 != 0 
+      if i.odd?
         puts "#{first_player_name} : Choose your number! 1-9"
       else
         puts "#{second_player_name} : Choose your number! 1-9"
@@ -61,13 +62,13 @@ when 'draw'
       break if (1..9).include? choice
     end
     puts 'Your choice is valid! printing current state of board...'
-    puts "The board looks like:"
+    puts 'The board looks like:'
     puts board
     # check if the game is over
-      # check if it is a draw
-      # if it is not a draw then it is a win scenario for the current player
+    # check if it is a draw
+    # if it is not a draw then it is a win scenario for the current player
     # change the symbols
   end
-  puts "There are no winners this time!"
+  puts 'There are no winners this time!'
   puts 'Game over!'
 end
