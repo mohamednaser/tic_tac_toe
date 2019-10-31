@@ -44,7 +44,7 @@ $ ./bin/main.rb
 
 Note : The `main.rb` file should be executable, if not, type this in your terminal. Note that the `#` means the command __should be executed as root__. 
 ```console
-# chmod +x  main.rb
+# chmod a+x  main.rb
 ```
 
 If you have any issue, request, or suggestion, post it [here](https://github.com/santiago-rodrig/tic_tac_toe/issues)
