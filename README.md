@@ -28,7 +28,7 @@ This project was executed by the duo of :
 
 - Ruby
 
-## GIF DEMO
+## Demo
 
 ![Demo](./img/demo.gif)
 
