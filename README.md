@@ -47,7 +47,7 @@ Note : The `main.rb` file should be executable, if not, type this in your termin
 # chmod a+x  main.rb
 ```
 
-If you have any issue, request, or suggestion, post it [here](https://github.com/santiago-rodrig/tic_tac_toe/issues)
+If you have any issue, request, or suggestion, post it [here](https://github.com/santiago-rodrig/tic_tac_toe/issues).
 
 ### Note apart
 
