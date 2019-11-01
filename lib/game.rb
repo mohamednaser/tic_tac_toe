@@ -2,11 +2,14 @@
 
 class Game
   attr_reader :state, :symbol
-  def initialize(symbol)
+  def initialize(first_player_obj, second_player_obj)
     @board = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
     @state = :playing
-    @symbol = symbol.to_sym
+    @symbol = first_player_obj.symbol.to_sym
     @moves_counter = 0
+
+    @first_player_obj = first_player_obj
+    @second_player_obj = second_player_obj
   end
 
   def over?
@@ -39,6 +42,14 @@ class Game
     @state = winner? ? :winner : :draw if @moves_counter == 9
     @state = winner? ? :winner : :playing unless @moves_counter == 9
     swap_symbol unless over?
+  end
+
+  def curent_player_name
+    if @first_player_obj.symbol.to_sym == @symbol
+      @first_player_obj.name
+    else
+      @second_player_obj.name
+    end
   end
 
   private

@@ -10,23 +10,39 @@ $LOAD_PATH << lib_path
 require 'validations'
 require 'helpers'
 require 'game'
+require 'player'
 
 puts 'Welcome to Tic Tac Toe game!'
 puts 'Developed by @mohamed_naser and @santiago-rodrig'
 puts
-puts 'Choose your symbol! X or O'
-symbol = gets.strip.downcase
 
-until Validations.valid_symbol(symbol)
+print 'First player, please enter your name: '
+first_player_name = gets.strip
+
+print 'Choose your symbol! X or O: '
+first_player_symbol = gets.strip.downcase
+
+while !Validations.valid_symbol(first_player_symbol)
   puts "Wrong input!\nYou should choose X or O!"
-  symbol = gets.strip.downcase
+  first_player_symbol = gets.strip.downcase
 end
 
-game = Game.new symbol
+print 'Second player, please enter your name: '
+second_player_name = gets.strip
+
+second_player_symbol = first_player_symbol == 'x' ? 'o' : 'x'
+
+puts "Welcome #{first_player_name}, your symbol is: #{first_player_symbol}"
+puts "Welcome #{second_player_name}, your symbol is: #{second_player_symbol}"
+
+first_player_obj = Player.new(first_player_name , first_player_symbol)
+second_player_obj = Player.new(second_player_name , second_player_symbol)
+
+game = Game.new(first_player_obj , second_player_obj)
 
 until game.over?
   game.draw_board
-  puts "Player #{game.symbol} choose your number!"
+  puts "Player #{game.curent_player_name} choose your number!"
   choice = gets.strip.downcase
   choice_numeric = choice.to_i
   until Validations.valid_number(choice_numeric) && game.valid_move(choice_numeric)
@@ -53,7 +69,7 @@ puts
 
 case game.state
 when :winner
-  puts "Player #{game.symbol} is the winner!"
+  puts "Player #{game.curent_player_name} is the winner!"
 when :draw
   puts 'Nobody wins!'
 end
