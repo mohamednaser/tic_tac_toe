@@ -45,7 +45,7 @@ class Game
   private
 
   def swap_players
-    @player = @player.eql?(@first) ? @second : @first 
+    @player = @player.eql?(@first) ? @second : @first
   end
 
   def winner?

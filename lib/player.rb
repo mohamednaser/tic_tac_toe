@@ -1,4 +1,4 @@
-# froze_string_literal: true
+# frozen_string_literal: true
 
 class Player
   attr_accessor :name, :symbol

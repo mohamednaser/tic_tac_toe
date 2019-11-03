@@ -3,23 +3,15 @@
 module Helpers
   module Validations
     def self.valid_symbol?(symbol)
-      [:x, :o].any? symbol
+      %i[x o].any? symbol
     end
 
     def self.valid_move?(board, number)
       return false unless number == number.to_i && number.between?(1, 9)
+
       mapped = Mappers.map_number number
       empty = board[mapped[:x]][mapped[:y]].nil?
       empty
-    end
-  end
-
-  module Colors
-    def self.colorize(string, code)
-      "\e[#{code}m#{string}\e[0m"
-    end
-    def red(string)
-      self.colorize(string, 31)
     end
   end
 
