@@ -19,7 +19,6 @@ describe Helpers do
       let(:game) { Game.new(player_one, player_two) }
       it 'validates a correct move' do
         expect(Helpers::Validations.valid_move?(game.board, 1)).to be_truthy
-        game.make_move(1)
       end
       it 'invalidates a letter' do
         expect(Helpers::Validations.valid_move?(game.board, 'asd')).to be_falsy
@@ -29,7 +28,23 @@ describe Helpers do
         expect(Helpers::Validations.valid_move?(game.board, 4.1)).to be_falsy
       end
       it 'invalidates a position that is already taken' do
+        game.make_move(1)
         expect(Helpers::Validations.valid_move?(game.board, 1)).to be_falsy
+      end
+    end
+  end
+  describe Helpers::Mappers do
+    describe '.map_number' do
+      it 'maps correctly a valid number' do
+        expect(Helpers::Mappers.map_number(1)).to eq({ x: 0, y: 0 })
+        expect(Helpers::Mappers.map_number(5)).to eq({ x: 1, y: 1 })
+        expect(Helpers::Mappers.map_number(7)).to eq({ x: 2, y: 0 })
+        expect(Helpers::Mappers.map_number(9)).to eq({ x: 2, y: 2 })
+      end
+      it 'returns nil if the number is invalid' do
+        expect(Helpers::Mappers.map_number(9.7)).to be_nil
+        expect(Helpers::Mappers.map_number('123')).to be_nil
+        expect(Helpers::Mappers.map_number(true)).to be_nil
       end
     end
   end
