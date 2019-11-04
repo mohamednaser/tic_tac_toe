@@ -49,16 +49,24 @@ class Game
   end
 
   def winner?
-    winner_vectors = [
-      [@board[0][0], @board[0][1], @board[0][2]],
-      [@board[1][0], @board[1][1], @board[1][2]],
-      [@board[2][0], @board[2][1], @board[2][2]],
+    symbol_as_string = @player.symbol.to_s
+    @board.any? { |row| row.all? symbol_as_string } ||
+      columns.any? { |column| column.all? symbol_as_string } ||
+      diagonals.any? { |diagonal| diagonal.all? symbol_as_string }
+  end
+
+  def columns
+    [
       [@board[0][0], @board[1][0], @board[2][0]],
       [@board[0][1], @board[1][1], @board[2][1]],
-      [@board[0][2], @board[1][2], @board[2][2]],
+      [@board[0][2], @board[1][2], @board[2][2]]
+    ]
+  end
+
+  def diagonals
+    [
       [@board[0][0], @board[1][1], @board[2][2]],
       [@board[2][0], @board[1][1], @board[0][2]]
     ]
-    winner_vectors.any? { |vector| vector.all? @player.symbol.to_s }
   end
 end
