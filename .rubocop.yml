@@ -32,6 +32,9 @@ Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Style/ClassVars:
+  Enabled: false
+
 
 Layout/AlignHash:
   EnforcedColonStyle: key

@@ -1,74 +1,64 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-puts 'Welcome to Tic Tac Toe game!'
-puts 'Developed by @mohamed_naser and @santiago-rodrig'
-puts
-print 'First player, please enter your name: '
-first_player_name = gets.strip
-print 'Choose your symbol! X or O: '
-first_player_symbol = gets.strip.downcase
-while first_player_symbol != 'x' && first_player_symbol != 'o'
-  puts "Wrong input!\nYou should choose X or O!"
-  first_player_symbol = gets.strip.downcase
-end
-print 'Second player, please enter your name: '
-second_player_name = gets.strip
-second_player_symbol = first_player_symbol == 'x' ? 'o' : 'x'
-puts "Welcome #{first_player_name}, your symbol is: #{first_player_symbol}"
-puts "Welcome #{second_player_name}, your symbol is: #{second_player_symbol}"
-board = <<STRING
- * | * | *
- * | * | *
- * | * | *
+require_relative '../lib/helpers'
+require_relative '../lib/game'
+require_relative '../lib/player'
+
+welcome_message = <<-STRING
+Welcome to the Tic Tac Toe game with Ruby!
+Developed by @mohamed_naser and @santiago-rodrig
+
 STRING
-scenario = nil
-loop do
-  print 'There are two possible scenarios: draw or winner, pick one: '
-  scenario = gets.chomp.downcase
-  break if scenario == 'winner' || scenario == 'draw'
+print welcome_message
+players = []
+2.times do
+  player = Player.new
+  players << player
+  print "#{Player.current.capitalize} player, please enter your name: "
+  player.name = gets.chomp
+  break if Player.current.eql? 'second'
+  loop do
+    print "#{player.name}, please choose your symbol (x or o): "
+    player.symbol = gets.chomp.downcase.to_sym
+    break if Helpers::Validations.valid_symbol? player.symbol
+  end
 end
-case scenario
-when 'winner'
-  6.times do |i|
-    loop do
-      if i.odd?
-        puts "#{first_player_name} : Choose your number! 1-9"
-      else
-        puts "#{second_player_name} : Choose your number! 1-9"
-      end
-      choice = gets.strip.to_i
-      break if (1..9).include? choice
-    end
-    puts 'Your choice is valid! printing current state of board...'
-    puts 'The board looks like:'
-    puts board
-    # check if the game is over
-    # check if it is a draw
-    # if it is not a draw then it is a win scenario for the current player
-    # change the symbols
+first, second = players
+second.symbol = first.symbol.eql?(:x) ? :o : :x
+players.each do |player|
+  puts "Welcome #{player.name}, your symbol is: #{player.symbol}"
+end
+game = Game.new first, second
+invalid_list = <<-STRING
+|1| Is not an integer number between 1 and 9.
+|2| Is a position that is already taken.
+
+STRING
+while game.playing
+  puts "\n|!| Board state: \n\n#{game.board_string}\n"
+  number = nil
+  loop do
+    print "#{game.player.name}, please choose your number: "
+    number = gets.to_f
+    break if Helpers::Validations.valid_move? game.board, number
+    puts "\n|!| ERRROR: #{game.player.name}, that option is invalid because one of the following reasons:"
+    print invalid_list
   end
-  puts "Well done #{second_player_name} you are the winner "
-  puts 'Game over!'
-when 'draw'
-  8.times do |i|
-    loop do
-      if i.odd?
-        puts "#{first_player_name} : Choose your number! 1-9"
-      else
-        puts "#{second_player_name} : Choose your number! 1-9"
-      end
-      choice = gets.strip.to_i
-      break if (1..9).include? choice
-    end
-    puts 'Your choice is valid! printing current state of board...'
-    puts 'The board looks like:'
-    puts board
-    # check if the game is over
-    # check if it is a draw
-    # if it is not a draw then it is a win scenario for the current player
-    # change the symbols
-  end
-  puts 'There are no winners this time!'
-  puts 'Game over!'
+  game.make_move number
+end
+game_over = <<-STRING
+
+GAME OVER
+
+|!| Final board state:
+
+#{game.board_string}
+STRING
+print game_over
+case game.state
+when :winner
+  puts "#{game.player.name}, you are the winner!"
+when :draw
+  puts 'Nobody wins!'
 end
