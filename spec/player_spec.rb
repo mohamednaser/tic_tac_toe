@@ -13,13 +13,19 @@ describe Player do
   end
   describe '#name=' do
     it 'should allow to set the name' do
+      expect(player_one.name = 'santiago').to eq('santiago')
     end
   end
   describe '#symbol' do
     it 'should allow to read the symbol' do
+      player_one.symbol = :x
+      expect(player_one.symbol).to eq(:x)
     end
   end
   describe '#symbol=' do
+    it 'should allow to set the symbol' do
+      expect(player_one.symbol = :o).to eq(:o)
+    end
   end
   describe '#initialize' do
     context 'first player created' do
