@@ -51,8 +51,8 @@ class Game
   def winner?
     symbol_as_string = @player.symbol.to_s
     @board.any? { |row| row.all? symbol_as_string } ||
-    columns.any? { |column| column.all? symbol_as_string } ||
-    diagonals.any? { |diagonal| diagonal.all? symbol_as_string }
+      columns.any? { |column| column.all? symbol_as_string } ||
+        diagonals.any? { |diagonal| diagonal.all? symbol_as_string }
   end
 
   def columns
