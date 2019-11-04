@@ -7,6 +7,7 @@ describe Player do
     let (:test_player_obj) { Player.new }
 
     context 'create first player ' do
+      before { Player.current = nil }
       it 'check current to be first when create a new player instance ' do
         test_case = test_player_obj.class.current
         expected_result = 'first'
@@ -16,6 +17,7 @@ describe Player do
     end
 
     context 'second player object ' do
+      before { Player.current = 'first' }
       it 'check current to be second after initalize another player object ' do
         test_case = test_player_obj.class.current
         expected_result = 'second'
