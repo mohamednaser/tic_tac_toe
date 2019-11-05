@@ -4,7 +4,7 @@ class Player
   attr_accessor :name, :symbol
   @@current = nil
 
-  def initialize symbol = :x
+  def initialize(symbol = :x)
     @@current = @@current.nil? ? 'first' : 'second'
     @symbol = symbol
   end
