@@ -4,7 +4,7 @@ require_relative '../lib/player.rb'
 
 describe Player do
   describe '#initalize' do
-    let (:test_player_obj) { Player.new }
+    let(:test_player_obj) { Player.new }
 
     context 'create first player ' do
       before { Player.current = nil }
