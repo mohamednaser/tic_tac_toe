@@ -29,11 +29,9 @@ describe Game do
       board_as_string_zero = " -  -  - \n -  -  - \n -  -  - \n"
       board_as_string_one = " x  x  - \n -  o  - \n -  x  o \n"
       expect(game.board_string).to eq(board_as_string_zero)
-      game.make_move(1)
-      game.make_move(5)
-      game.make_move(2)
-      game.make_move(9)
-      game.make_move(8)
+      moves = [1, 5, 2, 9, 8]
+      moves.each { |move| game.make_move(move) }
+
       expect(game.board_string).to eq(board_as_string_one)
     end
   end
@@ -65,7 +63,7 @@ describe Game do
         expect(game.state).to eql(:winner)
       end
     end
-    cotext "having a draw" do
+    context "having a draw" do
       it 'changes the state to draw' do
         moves = [1, 5, 3, 7, 4, 2, 8, 6, 9]
         moves.each { |move| game.make_move(move) }
