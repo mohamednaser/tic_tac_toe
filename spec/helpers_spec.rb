@@ -2,6 +2,7 @@
 
 require_relative '../lib/helpers'
 require_relative '../lib/game'
+require_relative '../lib/player'
 
 describe Helpers do
   describe Helpers::Validations do
