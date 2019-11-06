@@ -7,6 +7,7 @@ describe Game do
   let(:first) { Player.new }
   let(:second) { Player.new(:o) }
   let(:game) { Game.new(first, second) }
+
   describe '#initialize' do
     it 'sets @board to a 3 by 3 matrix with nils' do
       all_nil = game.board.all? { |row| row.all?(NilClass) }
@@ -22,6 +23,7 @@ describe Game do
       expect(game.state).to eq(:playing)
     end
   end
+
   describe '#board_string' do
     it 'gives a string representing the board' do
       board_as_string_zero = " -  -  - \n -  -  - \n -  -  - \n"
@@ -35,6 +37,7 @@ describe Game do
       expect(game.board_string).to eq(board_as_string_one)
     end
   end
+
   describe '#playing' do
     it 'gives false if @state is not equal to :playing' do
       game.state = :winner
@@ -53,31 +56,22 @@ describe Game do
     end
   end
 
-  describe '#winner' do
-    it 'check happy sceniro for winner ' do
-      game.make_move(1)
-      game.make_move(5)
-      game.make_move(2)
-      game.make_move(9)
-      game.make_move(8)
-      game.make_move(4)
-      game.make_move(3)
+  describe '#make_move' do
+    context "#winner?" do
+      it 'changes the state to winner' do
+        moves = [1, 5, 2, 9, 8, 4, 3]
+        moves.each { |move| game.make_move(move) }
 
-      expect(game.state).to eql(:winner)
+        expect(game.state).to eql(:winner)
+      end
     end
+    cotext "having a draw" do
+      it 'changes the state to draw' do
+        moves = [1, 5, 3, 7, 4, 2, 8, 6, 9]
+        moves.each { |move| game.make_move(move) }
 
-    it 'check draw sceniro ' do
-      game.make_move(1)
-      game.make_move(5)
-      game.make_move(3)
-      game.make_move(7)
-      game.make_move(4)
-      game.make_move(2)
-      game.make_move(8)
-      game.make_move(6)
-      game.make_move(9)
-
-      expect(game.state).to eql(:draw)
+        expect(game.state).to eql(:draw)
+      end
     end
   end
 end
