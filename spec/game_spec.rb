@@ -44,4 +44,40 @@ describe Game do
       expect(game.playing).to be_truthy
     end
   end
+
+  describe '#swap_players' do
+    it 'check swap players after success move' do
+      current_player = game.player
+      game.make_move(3)
+      expect(game.player).not_to eq(current_player)
+    end
+  end
+
+  describe '#winner' do
+    it 'check happy sceniro for winner ' do
+      game.make_move(1)
+      game.make_move(5)
+      game.make_move(2)
+      game.make_move(9)
+      game.make_move(8)
+      game.make_move(4)
+      game.make_move(3)
+
+      expect(game.state).to eql(:winner)
+    end
+
+    it 'check draw sceniro ' do
+      game.make_move(1)
+      game.make_move(5)
+      game.make_move(3)
+      game.make_move(7)
+      game.make_move(4)
+      game.make_move(2)
+      game.make_move(8)
+      game.make_move(6)
+      game.make_move(9)
+
+      expect(game.state).to eql(:draw)
+    end
+  end
 end
