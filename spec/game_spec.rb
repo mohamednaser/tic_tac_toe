@@ -55,7 +55,7 @@ describe Game do
   end
 
   describe '#make_move' do
-    context "#winner?" do
+    context '#winner?' do
       it 'changes the state to winner' do
         moves = [1, 5, 2, 9, 8, 4, 3]
         moves.each { |move| game.make_move(move) }
@@ -63,7 +63,7 @@ describe Game do
         expect(game.state).to eql(:winner)
       end
     end
-    context "having a draw" do
+    context 'having a draw' do
       it 'changes the state to draw' do
         moves = [1, 5, 3, 7, 4, 2, 8, 6, 9]
         moves.each { |move| game.make_move(move) }
