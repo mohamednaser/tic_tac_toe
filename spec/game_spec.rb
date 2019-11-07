@@ -54,7 +54,7 @@ describe Game do
       end
 
       it 'every array is made of symbols :x, :o, or nils' do
-        def symbol_or_nil
+        def mark_or_nil
           @game.board.all? do |array|
             array.all? do |element|
               %w[x o].include?(element) ||
@@ -63,9 +63,9 @@ describe Game do
           end
         end
 
-        expect(symbol_or_nil).to be_truthy
+        expect(mark_or_nil).to be_truthy
         (1..6).each { |move| @game.make_move move }
-        expect(symbol_or_nil).to be_truthy
+        expect(mark_or_nil).to be_truthy
       end
     end
   end
