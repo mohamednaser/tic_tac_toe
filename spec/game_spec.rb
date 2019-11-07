@@ -28,6 +28,29 @@ describe Game do
     end
   end
 
+  context 'setting the board' do
+    describe '#board' do
+      it 'should raise NoMethodError' do
+        expect { @game.board = [] }.to raise_error(NoMethodError)
+      end
+    end
+  end
+
+  context 'getting the board' do
+    describe '#board' do
+      it 'should not raise an error' do
+        expect { @game.board }.not_to raise_error
+      end
+
+      it 'should return an array of 3 arrays of three elements that are either nil or an integer number between 1 and 9' do
+        all_nil_or_integers = @game.board.all? do |row|
+          row.all? { |element| element.nil? || (element.between?(1, 9) && element.is_a?(Integer)) }
+        end
+        expect(all_nil_or_integers).to be_truthy
+      end
+    end
+  end
+
   describe '#board_string' do
     it 'gives a string representing the board' do
       board_as_string_zero = " -  -  - \n -  -  - \n -  -  - \n"
