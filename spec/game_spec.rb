@@ -53,20 +53,19 @@ describe Game do
         expect(@game.board).to be_all(Array)
       end
 
-      it 'every array is made of integers from 1 to 9 or nils' do
-        def integer_or_nil
+      it 'every array is made of symbols :x, :o, or nils' do
+        def symbol_or_nil
           @game.board.all? do |array|
             array.all? do |element|
-              element.instance_of?(Integer) &&
-                element.between?(1, 9) ||
+              %w[x o].include?(element) ||
                 element.nil?
             end
           end
         end
 
-        expect(integer_or_nil).to be_truthy
+        expect(symbol_or_nil).to be_truthy
         (1..6).each { |move| @game.make_move move }
-        expect(integer_or_nil).to be_truthy
+        expect(symbol_or_nil).to be_truthy
       end
     end
   end
