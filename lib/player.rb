@@ -6,6 +6,7 @@ class Player
 
   def initialize(symbol = :x)
     @@current = @@current.nil? ? 'first' : 'second'
+    return false unless symbol = :x or symbol = :o
     @symbol = symbol
   end
 
