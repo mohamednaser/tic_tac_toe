@@ -82,7 +82,8 @@ describe Game do
   context 'getting the player' do
     describe '#player' do
       it 'should return one of the players' do
-        is_one_of_the_players = @game.player.eql?(first) ||
+        is_one_of_the_players =
+          @game.player.eql?(first) ||
           @game.player.eql?(second)
         expect(is_one_of_the_players).to be_truthy
       end
