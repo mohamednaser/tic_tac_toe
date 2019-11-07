@@ -45,11 +45,28 @@ describe Game do
         expect { @game.board }.not_to raise_error
       end
 
-      it 'should return an array of 3 arrays of three elements that are either nil or an integer number between 1 and 9' do
-        all_nil_or_integers = @game.board.all? do |row|
-          row.all? { |element| element.nil? || (element.between?(1, 9) && element.is_a?(Integer)) }
+      it 'should return an array' do
+        expect(@game.board).to be_instance_of(Array)
+      end
+
+      it 'should contain three arrays' do
+        expect(@game.board).to be_all(Array)
+      end
+
+      it 'every array is made of integers from 1 to 9 or nils' do
+        def integer_or_nil
+          @game.board.all? do |array|
+            array.all? do |element|
+              element.instance_of?(Integer) &&
+                element.between?(1, 9) ||
+                element.nil?
+            end
+          end
         end
-        expect(all_nil_or_integers).to be_truthy
+
+        expect(integer_or_nil).to be_truthy
+        (1..6).each { |move| @game.make_move move }
+        expect(integer_or_nil).to be_truthy
       end
     end
   end
