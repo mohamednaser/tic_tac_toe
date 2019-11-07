@@ -17,19 +17,22 @@ describe Game do
       all_nil = @game.board.all? { |row| row.all?(NilClass) }
       expect(all_nil).to be_truthy
     end
+
     it 'sets @player to @first' do
       expect(@game.player).to eq(first)
     end
+
     it 'sets @moves to 0' do
       expect(@game.moves).to eq(0)
     end
+
     it 'sets @state to :playing' do
       expect(@game.state).to eq(:playing)
     end
   end
 
   context 'setting the board' do
-    describe '#board' do
+    describe '#board=' do
       it 'should raise NoMethodError' do
         expect { @game.board = [] }.to raise_error(NoMethodError)
       end
@@ -47,6 +50,58 @@ describe Game do
           row.all? { |element| element.nil? || (element.between?(1, 9) && element.is_a?(Integer)) }
         end
         expect(all_nil_or_integers).to be_truthy
+      end
+    end
+  end
+
+  context 'setting the player' do
+    describe '#player=' do
+      it 'should raise an error' do
+        expect { @game.player = Player.new }.to raise_error(NoMethodError)
+      end
+    end
+  end
+
+  context 'getting the player' do
+    describe '#player' do
+      it 'should return one of the players' do
+        is_one_of_the_players = @game.player.eql?(first) ||
+          @game.player.eql?(second)
+        expect(is_one_of_the_players).to be_truthy
+      end
+    end
+  end
+
+  context 'setting the moves' do
+    describe '#moves=' do
+      it 'should raise an error' do
+        expect { @game.moves = 10 }.to raise_error(NoMethodError)
+      end
+    end
+  end
+
+  context 'getting the moves' do
+    describe '#moves' do
+      it 'should not raise an error' do
+        expect { @game.moves }.not_to raise_error
+      end
+    end
+
+    context 'no moves at all' do
+      describe '#moves' do
+        it 'should return 0' do
+          expect(@game.moves).to eq(0)
+        end
+      end
+    end
+
+    context 'some moves' do
+      describe '#moves' do
+        it 'should return an integer between 0 and 9' do
+          is_integer = @game.moves.is_a? Integer
+          is_between = @game.moves.between? 0, 9
+          expect(is_integer && is_between).to be_truthy
+        end
       end
     end
   end
