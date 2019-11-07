@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+require_relative 'helpers'
+
 class Player
   attr_accessor :name, :symbol
   @@current = nil
 
-  def initialize(symbol = :x)
+  def initialize
     @@current = @@current.nil? ? 'first' : 'second'
-    @symbol = symbol
   end
 
   def self.current
