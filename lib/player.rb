@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'helpers'
+
 class Player
   attr_accessor :name, :symbol
   @@current = nil
@@ -10,5 +12,9 @@ class Player
 
   def self.current
     @@current
+  end
+
+  def self.current=(current)
+    @@current = current
   end
 end

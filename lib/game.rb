@@ -3,7 +3,8 @@
 require_relative 'helpers'
 
 class Game
-  attr_reader :state, :board, :player
+  attr_accessor :state
+  attr_reader :board, :player, :moves
 
   def initialize(first, second)
     @board = [
