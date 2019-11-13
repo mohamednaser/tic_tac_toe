@@ -46,6 +46,17 @@ If the last command fails then the `main.rb` file is not executable (though it s
 ```console
 # chmod a+x  main.rb
 ```
+## Testinf
+go to the main folder and run 
+```console
+$ rspec
+```
+
+You will see something like that 
+
+![Winner](./img/test-cases.png)
+
+## Bug Reporting 
 
 If you have any issue, request, or suggestion, post it [here](https://github.com/santiago-rodrig/tic_tac_toe/issues).
 
